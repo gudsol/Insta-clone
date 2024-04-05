@@ -37,7 +37,7 @@ const ReelsPage: React.FC<ReelsPageProps> = (props) => {
                             <ActionButtons data={value}/>
                             </div>
                         </div>
-                        <div className="w-[80%] h-[10%] absolute bottom-0 px-3">
+                        <div className="w-[80%] h-fit absolute bottom-0 px-3 ">
                             <div className="flex">
                             <Image className="lg:w-7 lg:h-7 sm:w-[3rem]  sm:h-[3rem] xs:w-[2.5rem] xs:h-[2.5rem] rounded-full" src={value?.profile} alt=""/>
                             <p className="lg:ml-4 w-[70%] lg:text-[1.3rem] truncate sm:text-[1.2rem] xs:ml-4 sm:ml-4">{value?.name}</p>

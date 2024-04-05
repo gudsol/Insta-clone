@@ -10,7 +10,7 @@ const MoreButton:React.FC<MoreButtonProps>=(props)=>{
     return(
         <div className="flex items-center justify-center w-full select-none">
             <div className="w-fit">
-                <MoreButton className="m-0 cursor-pointer sm:text-[30px] xs:text-[2rem] lg:text-[1.5rem]" />
+                <MoreButton className="m-0 cursor-pointer sm:text-[30px] xs:text-[1.5rem] lg:text-[1.5rem]" />
             </div>
         </div>
     )
