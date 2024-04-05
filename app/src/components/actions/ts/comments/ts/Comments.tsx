@@ -125,8 +125,9 @@ const Comments: React.FC<CommentsProps> = (props) => {
                 ]
             }
             ]
-
+            if(captureComments?.trim()?.length>0){
             setActionData({ ...actionData, comments: [...addComment] })
+            }
             setCaptureComments('')
         }
     }
@@ -152,10 +153,12 @@ const Comments: React.FC<CommentsProps> = (props) => {
                     return { ...cmt }
                 }
             })
+            if(captureComments?.trim()?.length>0){
             setActionData({ ...actionData, comments: [...addReplies] })
             setTempComment('')
             setCaptureComments('')
             setCommentVarient('comment')
+            }
         }
     }
 
@@ -168,10 +171,12 @@ const Comments: React.FC<CommentsProps> = (props) => {
                     return { ...cmt }
                 }
             })
+            if(captureComments?.trim()?.length>0){
             setActionData({ ...actionData, comments: [...addEditComments] })
             setCaptureComments('')
             setCommentVarient('comment')
             setCommentIds(0)
+            }
         }
     }
 
@@ -197,7 +202,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 
     console.log('qqq-2', actionData)
     return (
-        <div ref={commentDivRef} className="rounded border border-solid border-2 border-[rgba(231,231,232,0.2)] w-64 h-[26rem] absolute -bottom-16 right-11 bg-[rgba(25,25,25,0.8)] backdrop-filter backdrop-blur-lg">
+        <div ref={commentDivRef} className="rounded border border-solid border-2 border-[rgba(231,231,232,0.2)] lg:w-64 sm:w-80 xs:w-72 lg:h-[26rem] sm:h-[30rem] xs:h-[30rem] sm:px-4 sm:pt-2 xs:px-2 xs:pt-2 absolute lg:-bottom-16 lg:right-11 sm:right-14 sm:-bottom-26 xs:right-14 xs:-bottom-32 bg-[rgba(25,25,25,0.8)] backdrop-filter backdrop-blur-lg">
             <div className="py-2 px-4 flex items-center ">
                 <Close size={20} className="cursor-pointer" onClick={openComment} />
                 <p className=" text-[14px] font-[700] w-full text-center">Comments</p>

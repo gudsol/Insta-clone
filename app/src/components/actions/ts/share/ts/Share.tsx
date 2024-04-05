@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, EmailShareButton, WhatsappShareButton } from 'react-share';
+import React, {useEffect, useRef } from 'react'
+import { TwitterShareButton, LinkedinShareButton, EmailShareButton, WhatsappShareButton } from 'react-share';
 import { Icons } from '../../../../../utils/Icons'
 
 interface SharePros {
@@ -11,7 +11,7 @@ const Share: React.FC<SharePros> = (props) => {
 
     const { WhatsApp, FaceBook, Twitter, LinkedIn, Mail } = Icons
     const shareUrl:string = 'https://example.com';
-    const title:string = 'Example Website';
+    const title="Check out this amazing website!";
     const emailSubject:string = 'Check out this website';
     const emailBody:string = 'I found this amazing website and thought you might be interested.';
 
@@ -32,25 +32,22 @@ const Share: React.FC<SharePros> = (props) => {
     }, []);
 
     return (
-        <div ref={shareDivRef} className='absolute border border-solid border-2 border-[rgba(231,231,232,0.2)] w-fit right-10 w-[50px] h-fit bg-[rgba(25,25,25,0.7)] backdrop-filter backdrop-blur-lg rounded pr-8 pl-4 py-2 grid grid-cols-5 gap-x-12'>
+        <div ref={shareDivRef} className='absolute border border-solid border-2 border-[rgba(231,231,232,0.2)]  right-10  h-fit bg-[rgba(25,25,25,0.7)] backdrop-filter backdrop-blur-lg rounded pr-12 pl-4 py-2 grid grid-cols-4 gap-x-14'>
             <WhatsappShareButton
                 url="https://example.com"
                 title="Check out this amazing website!"
                 separator=":: "
             >
-                <WhatsApp size={20} className='hover:text-[#25D366]' />
+                <WhatsApp className='hover:text-[#25D366] lg:text-[1.8rem] xs:text-[1.8rem] sm:text-[1.8rem]' />
             </WhatsappShareButton >
-            {/* <FacebookShareButton url={shareUrl} quote={title}>
-                <FaceBook size={20} className='hover:text-[#1877F2]' />
-            </FacebookShareButton> */}
             <TwitterShareButton url={shareUrl} title={title}>
-                <Twitter size={17} />
+                <Twitter className='lg:text-[1.5rem] xs:text-[1.3rem] sm:text-[1.3rem]'/>
             </TwitterShareButton>
             <LinkedinShareButton url={shareUrl} title={title}>
-                <LinkedIn size={20} className='hover:text-[#0077b5]' />
+                <LinkedIn className='hover:text-[#0077b5] lg:text-[1.8rem] xs:text-[1.8rem] sm:text-[1.8rem]' />
             </LinkedinShareButton>
             <EmailShareButton url={shareUrl} subject={emailSubject} body={emailBody}>
-                <Mail size={20} className='hover:text-[#DB4437]' />
+                <Mail  className='hover:text-[#DB4437] lg:text-[1.8rem] xs:text-[1.8rem] sm:text-[1.8rem]' />
             </EmailShareButton>
         </div>
     )
