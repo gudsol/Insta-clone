@@ -1,5 +1,6 @@
 import React from "react";
 import { Icons } from '../../../utils/Icons'
+import {formatNumber} from '../../../utils/commonLogics'
 
 interface LikeButtonProps {
     actionData: {
@@ -29,7 +30,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
             <div className="w-fit">
                 {!actionData?.like?.status && <HeartOutLine className="m-0 cursor-pointer sm:text-[30px] xs:text-[2rem] lg:text-[1.5rem]" onClick={() => like(true)} />}
                 {actionData?.like?.status && <HeartFilled className="m-0 cursor-pointer text-[red] sm:text-[30px] xs:text-[2rem] lg:text-[1.5rem]" onClick={() => like(false)} />}
-                <p className="w-full mt-2 lg:text-[0.7rem] text-center sm:text-[1rem] xs:text-[1rem]">{actionData?.like?.count}</p>
+                <p className="w-full mt-2 lg:text-[0.7rem] text-center sm:text-[1rem] xs:text-[1rem]">{formatNumber(actionData?.like?.count)}</p>
             </div>
         </div>
     )

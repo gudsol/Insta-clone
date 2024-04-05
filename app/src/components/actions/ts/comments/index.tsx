@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { Icons } from '../../../../utils/Icons'
 import Comments from "./ts/Comments";
+import {formatNumber} from '../../../../utils/commonLogics'
 
 interface CommentsButtonProps {
     actionData:any;
@@ -22,7 +23,7 @@ const CommentsButton: React.FC<CommentsButtonProps> = (props) => {
              {openCommentBox&&<Comments actionData={actionData} setActionData={setActionData} openComment={openComment}/>}
             <div className="w-fit">
                 <PlainChatOutline className="m-0 cursor-pointer sm:text-[30px] xs:text-[2rem] lg:text-[1.5rem]" onClick={openComment} />
-                <p className="w-full mt-2 lg:text-[0.7rem] text-center sm:max-md:text-[1rem] sm:text-[1rem]">{actionData?.comments?.length}</p>
+                <p className="w-full mt-2 lg:text-[0.7rem] text-center sm:max-md:text-[1rem] sm:text-[1rem]">{formatNumber(actionData?.comments?.length)}</p>
             </div>
         </div>
     )

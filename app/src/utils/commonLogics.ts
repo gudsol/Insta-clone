@@ -15,5 +15,15 @@ export const generateRandomNumber=(digits:number)=>{
     const max = Math.pow(10, digits) - 1; // Maximum value based on number of digits
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+  export const formatNumber = (number:number) => {
+    if (number >= 1000000) {
+      return (number / 1000000).toFixed(1) + 'm';
+    } else if (number >= 1000) {
+      return (number / 1000).toFixed(1) + 'k';
+    } else {
+      return number.toString();
+    }
+  };
   
   

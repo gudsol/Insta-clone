@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Icons } from '../../../../../utils/Icons'
 import Profile from '../../../../../../assets/profile.jpg'
 import Image from "next/image";
-import { debounce, generateRandomNumber } from '../../../../../utils/commonLogics'
+import { debounce, generateRandomNumber,formatNumber } from '../../../../../utils/commonLogics'
 
 interface CommentsProps {
     actionData: any;
@@ -201,7 +201,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
     }
 
     return (
-        <div ref={commentDivRef} className="rounded border border-solid border-2 border-[rgba(231,231,232,0.2)] lg:w-64 sm:w-80 xs:w-72 lg:h-[26rem] sm:h-[30rem] xs:h-[30rem] sm:px-4 sm:pt-2 xs:px-2 xs:pt-2 absolute lg:-bottom-16 lg:right-11 sm:right-14 sm:-bottom-26 xs:right-14 xs:-bottom-32 bg-[rgba(25,25,25,0.8)] backdrop-filter backdrop-blur-lg">
+        <div ref={commentDivRef} className="rounded border border-solid border-2 border-[rgba(231,231,232,0.2)] lg:w-64 sm:w-80 xs:w-72 lg:h-[26rem] sm:h-[30rem] xs:h-[30rem] sm:px-4 sm:pt-2 xs:px-2 xs:pt-2 lg:pb-3 lg:px-0 absolute lg:-bottom-16 lg:right-11 sm:right-14 sm:-bottom-26 xs:right-8 xs:-bottom-32 bg-[rgba(25,25,25,0.8)] backdrop-filter backdrop-blur-lg">
             <div className="py-2 px-4 flex items-center ">
                 <Close size={20} className="cursor-pointer" onClick={openComment} />
                 <p className=" text-[14px] font-[700] w-full text-center">Comments</p>
@@ -222,11 +222,11 @@ const Comments: React.FC<CommentsProps> = (props) => {
                                 {comments?.like?.status && <HeartFilled onClick={() => likeComments('comment', false, comments?.id, 0)} size={10} className="text-[red] cursor-pointer" />}
                             </div>
                             <div className="text-[10px] text-[rgba(102,102,102,1)] flex mt-1 px-3 ">
-                                <p >{like?.count} likes</p>
+                                <p >{formatNumber(like?.count)} likes</p>
                                 <p className="ml-4 cursor-pointer hover:text-blue-500" onClick={() => { captureVarient('reply', comments?.id, comments?.comment) }}>Reply</p>
                                 {comments?.user && <p className="ml-4 cursor-pointer hover:text-blue-500" onClick={() => { captureVarient('editcomments', comments?.id, comments?.comment) }} >Edit</p>}
                             </div>
-                            {comments?.reply && comments?.reply?.length > 0 && <p className="text-[10px] text-[rgba(102,102,102,1)] px-3 mt-2 cursor-pointer hover:text-blue-500" onClick={() => openRepliesFunc(comments?.id, true)}>_______{openReplies?.[comments?.id] ? 'Close all' : 'View all'} {comments?.reply?.length} Replies</p>}
+                            {comments?.reply && comments?.reply?.length > 0 && <p className="text-[10px] text-[rgba(102,102,102,1)] px-3 mt-2 cursor-pointer hover:text-blue-500" onClick={() => openRepliesFunc(comments?.id, true)}>_______{openReplies?.[comments?.id] ? 'Close all' : 'View all'} {formatNumber(comments?.reply?.length)} Replies</p>}
                             {(comments?.reply && comments?.reply?.length > 0 && openReplies?.[comments?.id]) && <div className="h-fit px-3 py-2 rounded bg-[#000] mt-2">
                                 {comments?.reply && comments?.reply?.length > 0 && comments?.reply?.map((reply: any, index: number | string) => {
                                     let like = reply?.like
@@ -243,7 +243,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
                                                 {reply?.like?.status && <HeartFilled onClick={() => likeComments('reply', false, comments?.id, reply?.id)} size={10} className="text-[red] cursor-pointer" />}
                                             </div>
                                             <div className="text-[8px] text-[rgba(102,102,102,1)] flex mt-1 px-3 ">
-                                                <p className="cursor-pointer">{like?.count} likes</p>
+                                                <p className="cursor-pointer">{formatNumber(like?.count)} likes</p>
                                             </div>
                                         </div>
                                     )
@@ -262,9 +262,9 @@ const Comments: React.FC<CommentsProps> = (props) => {
                 </div>
                 <div className="h-full w-full flex items-center bg-[#000] px-1 rounded-full hover:border hover:border-solid hover:border-gray-500">
                     <Image src={Profile} alt="" className="w-12 h-7 rounded-full mr-2 ml-0" />
-                    {(commentVarient === 'comment' || commentVarient === '') && <textarea ref={commentBoxRef} key={actionData?.comments} defaultValue={captureComments} onClick={() => captureVarient('comment', 0, '')} onChange={debouncedChangeHandler} placeholder="Add a comments" className="w-full h-full rounded-3xl bg-[#000] px-2 py-2 outline-0 placeholder:text-[12px] resize-none flex  overflow-hidden text-[10px] " />}
-                    {commentVarient === 'reply' && <textarea ref={commentBoxRef} key={tempComment} defaultValue={captureComments} onChange={debouncedChangeHandler} placeholder="Reply the comment" className="w-full h-full rounded-3xl bg-[#000] px-2 py-2 outline-0 placeholder:text-[12px] resize-none flex  overflow-hidden text-[10px] " />}
-                    {commentVarient === 'editcomments' && <textarea ref={commentBoxRef} key={ids} defaultValue={captureComments} onBlur={() => captureComments?.length === 0 ? captureVarient('comment', 0, '') : ''} onChange={debouncedChangeHandler} placeholder="Edit the comment" className="w-full h-full rounded-3xl bg-[#000] px-2 py-2 outline-0 placeholder:text-[12px] resize-none flex  overflow-hidden text-[10px] " />}
+                    {(commentVarient === 'comment' || commentVarient === '') && <textarea ref={commentBoxRef} key={actionData?.comments} defaultValue={captureComments} onClick={() => captureVarient('comment', 0, '')} onChange={debouncedChangeHandler} placeholder="Add a comments" className="placeholder:truncate w-full h-full rounded-3xl bg-[#000] px-2 py-2 outline-0 placeholder:text-[12px] resize-none flex  overflow-hidden text-[10px] " />}
+                    {commentVarient === 'reply' && <textarea ref={commentBoxRef} key={tempComment} defaultValue={captureComments} onChange={debouncedChangeHandler} placeholder="Reply the comment" className="w-full h-full rounded-3xl bg-[#000] px-2 py-2 outline-0 placeholder:text-[12px] placeholder:truncate resize-none flex  overflow-hidden text-[10px] " />}
+                    {commentVarient === 'editcomments' && <textarea ref={commentBoxRef} key={ids} defaultValue={captureComments} onBlur={() => captureComments?.length === 0 ? captureVarient('comment', 0, '') : ''} onChange={debouncedChangeHandler} placeholder="Edit the comment" className="placeholder:truncate w-full h-full rounded-3xl bg-[#000] px-2 py-2 outline-0 placeholder:text-[12px] resize-none flex  overflow-hidden text-[10px] " />}
                     <EmojiOutLine size={26} className="mr-4 cursor-pointer hover:text-yellow-300" />
                     <SentOutLine onClick={postComment} size={20} className="mr-2 cursor-pointer hover:text-blue-600" />
                 </div>
