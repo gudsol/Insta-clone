@@ -46,7 +46,8 @@ export const sideBarData=[
     {
         name:'Profile',
         icon:'profile',
-        path:'profile'
+        path:'/profile',
+        filled:'profile'
     },
 
 ]
