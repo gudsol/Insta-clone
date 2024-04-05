@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                     let Icons = value?.icon
                     let path:string=value?.path||"/"
                     return (
-                        <Link href={path}>
+                        <Link href={path} key={key}>
                             <div className="w-fit flex items-center lg:mt-6 cursor-pointer select-none md:mt-0 lg:py-0" key={key}>
                                 {Icons !== "profile" && <Icons className="sm:text-[30px] lg:text-[1.5rem] xs:text-[1.7rem]" />}
                                 {Icons === "profile" && <Image src={ProfilePic} alt="" className="lg:w-7 lg:h-7 rounded-full sm:w-[30px] sm:h-[30px] xs:w-[1.7rem] xs:h-[1.7rem]" />}
