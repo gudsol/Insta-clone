@@ -2,6 +2,7 @@ import React from "react";
 import { Icons } from '../../../utils/Icons'
 import {formatNumber} from '../../../utils/commonLogics'
 
+// Define props interface for LikeButton component
 interface LikeButtonProps {
     actionData: {
         like: {
@@ -12,19 +13,25 @@ interface LikeButtonProps {
     setActionData: any;
 }
 
+// Define the LikeButton component as a functional component
 const LikeButton: React.FC<LikeButtonProps> = (props) => {
 
-    const { actionData, setActionData } = props
+    const { actionData, setActionData } = props // Destructure props to extract actionData and setActionData
 
-    const { HeartOutLine, HeartFilled } = Icons
+    const { HeartOutLine, HeartFilled } = Icons // Destructure Icons from props
 
+    // Function to handle like action
     const like = (status: boolean) => {
         if (status) {
+            // If status is true, increment like count
             setActionData({ ...actionData, like: { status: status, count: actionData?.like?.count + 1 } })
         } else {
+             // If status is false, decrement like count
             setActionData({ ...actionData, like: { status: status, count: actionData?.like?.count - 1 } })
         }
     }
+
+     // Render the LikeButton component
     return (
         <div className="flex items-center justify-center w-full select-none m-0">
             <div className="w-fit">
@@ -36,4 +43,4 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
     )
 }
 
-export default React.memo(LikeButton)
+export default React.memo(LikeButton) // Export LikeButton component with React.memo for performance optimization

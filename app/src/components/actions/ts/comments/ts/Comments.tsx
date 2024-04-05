@@ -4,19 +4,21 @@ import Profile from '../../../../../../assets/profile.jpg'
 import Image from "next/image";
 import { debounce, generateRandomNumber,formatNumber } from '../../../../../utils/commonLogics'
 
+// Define props interface for Comments component
 interface CommentsProps {
     actionData: any;
     setActionData: any;
     openComment: () => void;
 }
 
+// Define the Comments component as a functional component
 const Comments: React.FC<CommentsProps> = (props) => {
-    const { actionData, setActionData, openComment } = props
+    const { actionData, setActionData, openComment } = props // Destructure props to extract actionData, setActionData, and openComment
 
-    const { Close, HeartOutLine, HeartFilled, SentOutLine, EmojiOutLine } = Icons
+    const { Close, HeartOutLine, HeartFilled, SentOutLine, EmojiOutLine } = Icons // Destructure icons from Icons
 
-    const commentBoxRef = useRef<HTMLTextAreaElement>(null);
-    const commentDivRef = useRef<HTMLDivElement>(null);
+    const commentBoxRef = useRef<HTMLTextAreaElement>(null); // Reference to the comment box
+    const commentDivRef = useRef<HTMLDivElement>(null); // Reference to the comment div
 
     const [captureComments, setCaptureComments] = useState<string>('')
     const [commentVarient, setCommentVarient] = useState<string>('')
@@ -24,7 +26,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
     const [tempComment, setTempComment] = useState<string>('')
     const [openReplies, setOpenReplies] = useState<any>({})
 
-
+ // Effect to handle click outside the comment div
     useEffect(() => {
         const handleClickOutside: any = (event: MouseEvent) => {
             if (commentDivRef.current && !commentDivRef.current.contains(event.target as Node)) {
@@ -39,6 +41,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         };
     }, []);
 
+     // Function to capture comment variant, ID, and comment
     const captureVarient = (varient: string, id: number, comment: string) => {
         if (varient?.toLowerCase() !== commentVarient?.toLowerCase()) {
             setCommentVarient(varient)
@@ -64,6 +67,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         }
     }
 
+    // Function to handle like on comments and replies
     const likeComments = (varient: string, status: boolean, id: number | string, replyId: number | string) => {
         if (varient === 'comment') {
             let addlike: [] = actionData?.comments?.map((cmt: any) => {
@@ -102,12 +106,15 @@ const Comments: React.FC<CommentsProps> = (props) => {
         }
     }
 
+     // Function to capture comment text
     const comment = (e: any) => {
         setCaptureComments(e?.target?.value)
     }
 
+     // Debounced change handler for comment input
     const debouncedChangeHandler = debounce(comment, 500); // Debounce with 500ms delay
 
+     // Function to add comment
     const addComment = () => {
         if (commentVarient?.toLowerCase() === 'comment') {
             let addComment = [...actionData?.comments,
@@ -132,6 +139,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         }
     }
 
+     // Function to add reply
     const addReplies = () => {
         if (commentVarient?.toLowerCase() === 'reply') {
             let addReplies: [] = actionData?.comments?.map((cmt: any) => {
@@ -162,6 +170,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         }
     }
 
+     // Function to edit comment
     const editComment = () => {
         if (commentVarient?.toLowerCase() === 'editcomments') {
             let addEditComments: [] = actionData?.comments?.map((cmt: any) => {
@@ -180,6 +189,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         }
     }
 
+     // Function to post comment
     const postComment = () => {
         switch (commentVarient?.toLowerCase()) {
             case 'reply':
@@ -196,10 +206,12 @@ const Comments: React.FC<CommentsProps> = (props) => {
         }
     }
 
+     // Function to open or close replies
     const openRepliesFunc = (id: number | string, status: boolean) => {
         setOpenReplies({ [id]: openReplies?.[id] ? !openReplies?.[id] : status })
     }
 
+     // Render the Comments component
     return (
         <div ref={commentDivRef} className="rounded border border-solid border-2 border-[rgba(231,231,232,0.2)] lg:w-64 sm:w-80 xs:w-72 lg:h-[26rem] sm:h-[30rem] xs:h-[30rem] sm:px-4 sm:pt-2 xs:px-2 xs:pt-2 lg:pb-3 lg:px-0 absolute lg:-bottom-16 lg:right-11 sm:right-14 sm:-bottom-26 xs:right-8 xs:-bottom-32 bg-[rgba(25,25,25,0.8)] backdrop-filter backdrop-blur-lg">
             <div className="py-2 px-4 flex items-center ">
