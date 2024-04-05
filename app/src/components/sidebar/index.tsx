@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                     let Icons = value?.icon
                     return (
                         <div className="w-fit flex items-center lg:mt-6 cursor-pointer select-none md:mt-0 lg:py-0" key={key}>
-                            {Icons !== "profile" && <Icons className="sm:text-[30px] lg:text-[1.8rem] xs:text-[1.7rem]"/>}
+                            {Icons !== "profile" && <Icons className="sm:text-[30px] lg:text-[1.5rem] xs:text-[1.7rem]"/>}
                             {Icons === "profile" && <Image src={ProfilePic} alt="" className="lg:w-7 lg:h-7 rounded-full sm:w-[30px] sm:h-[30px] xs:w-[1.7rem] xs:h-[1.7rem]" />}
                             <p className="ml-4 md:hidden lg:block sm:hidden xs:hidden">{value?.name}</p>
                         </div>
@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
                     let Icons = value?.icon
                    return (
                         <div className="w-fit flex items-center mt-4 cursor-pointer select-none" key={key}>
-                            <Icons className="text-[1.8rem]" />
+                            <Icons className="text-[1.5rem]" />
                             <p className="ml-4">{value?.name}</p>
                         </div>
 
