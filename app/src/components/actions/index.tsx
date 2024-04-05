@@ -16,7 +16,7 @@ const ActionButtons:React.FC<ActionButtonsProps>=(props)=>{
     const[actionData,setActionData]=useState<any>({...data})
 
     return(
-        <div className="px-4 h-3/6 w-auto grid grid-cols-1 ">
+        <div className="px-4 h-3/5 w-auto grid grid-cols-1 xs:gap-y-4 ">
                 <LikeButton actionData={actionData} setActionData={setActionData}/>
                 <CommentsButton actionData={actionData} setActionData={setActionData}/>
                 <ShareButton />

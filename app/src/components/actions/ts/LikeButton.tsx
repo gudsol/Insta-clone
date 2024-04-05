@@ -27,9 +27,9 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
     return (
         <div className="flex items-center justify-center w-full select-none m-0">
             <div className="w-fit">
-                {!actionData?.like?.status && <HeartOutLine className="m-0 cursor-pointer sm:max-md:text-[30px] sm:text-[70px] lg:text-[20px]" onClick={() => like(true)} />}
-                {actionData?.like?.status && <HeartFilled className="m-0 cursor-pointer text-[red] sm:max-md:text-[30px] sm:text-[70px] lg:text-[20px] " onClick={() => like(false)} />}
-                <p className="w-full mt-2 lg:text-[12px] text-center sm:max-md:text-[1rem] sm:text-[2rem]">{actionData?.like?.count}</p>
+                {!actionData?.like?.status && <HeartOutLine className="m-0 cursor-pointer sm:text-[30px] xs:text-[2rem] lg:text-[2rem]" onClick={() => like(true)} />}
+                {actionData?.like?.status && <HeartFilled className="m-0 cursor-pointer text-[red] sm:text-[30px] xs:text-[2rem] lg:text-[2rem]" onClick={() => like(false)} />}
+                <p className="w-full mt-2 lg:text-[1rem] text-center sm:text-[1rem] xs:text-[1rem]">{actionData?.like?.count}</p>
             </div>
         </div>
     )

@@ -21,7 +21,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src,videoRef,isPlaying,setIsP
 
   return (
     <div className="relative" >
-      <video ref={videoRef} className="lg:h-full sm:max-md:h-[85.5vh] sm:h-[87vh]" loop>
+      <video ref={videoRef} className="lg:h-full sm:h-[87vh] xs:h-[87vh]" loop>
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

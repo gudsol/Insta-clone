@@ -39,10 +39,10 @@ const ReelsPage: React.FC<ReelsPageProps> = (props) => {
                         </div>
                         <div className="w-[80%] h-[10%] absolute bottom-0 px-3">
                             <div className="flex">
-                            <Image className="lg:w-7 lg:h-7 sm:max-md:w-10 sm:max-md:h-10 sm:w-[6rem] sm:h-[6rem] rounded-full" src={value?.profile} alt=""/>
-                            <p className="lg:ml-4 w-[70%] lg:text-[1rem] truncate sm:max-md:text-[1rem] sm:text-[2.5rem] sm:max-md:ml-4 sm:ml-8">{value?.name}</p>
+                            <Image className="lg:w-7 lg:h-7 sm:w-[3rem]  sm:h-[3rem] xs:w-[2.5rem] xs:h-[2.5rem] rounded-full" src={value?.profile} alt=""/>
+                            <p className="lg:ml-4 w-[70%] lg:text-[1.3rem] truncate sm:text-[1.2rem] xs:ml-4 sm:ml-4">{value?.name}</p>
                             </div>
-                            <p className="w-[50%] truncate lg:text-[10px] tracking-wider lg:mt-2 sm:max-md:text-[0.8rem] sm:max-md:mt-4 sm:text-[1.8rem] sm:mt-[1.5rem] ">{value?.description}</p>
+                            <p className="w-[50%] truncate lg:text-[0.9rem] lg:mt-2 xs:text-[0.7rem] sm:text-[0.9rem] mt-2">{value?.description}</p>
                         </div>
                     </div>
                     </div>
