@@ -3,35 +3,43 @@ import {Icons} from '../src/utils/Icons'
 export const sideBarData=[
     {
         name:'Home',
-        icon:Icons?.HomeOutline
+        icon:Icons?.HomeOutline,
+        path:'/home'
     },
     {
         name:'Search',
-        icon:Icons?.SearchOutline
+        icon:Icons?.SearchOutline,
+        path:'/search'
     },
     {
         name:'Explore',
-        icon:Icons?.CompassOutline
+        icon:Icons?.CompassOutline,
+        path:'/explore'
     },
     {
         name:'Reels',
-        icon:Icons?.ClapperOutline
+        icon:Icons?.ClapperOutline,
+        path:'/'
     },
     {
         name:'Messages',
-        icon:Icons?.ChatOutline
+        icon:Icons?.ChatOutline,
+        path:'/message'
     },
     {
         name:'Notifications',
-        icon:Icons?.HeartOutLine
+        icon:Icons?.HeartOutLine,
+        path:'/notification'
     },
     {
         name:'Create',
-        icon:Icons?.CreateOutline
+        icon:Icons?.CreateOutline,
+        path:'/create'
     },
     {
         name:'Profile',
-        icon:'profile'
+        icon:'profile',
+        path:'profile'
     },
 
 ]

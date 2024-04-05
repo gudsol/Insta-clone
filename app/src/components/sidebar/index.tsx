@@ -3,6 +3,7 @@ import InstagramLogo from '../../../assets/insagran-name-logo.png'
 import Image from "next/image";
 import { sideBarData, sideBarFooterData } from '../../../mock/SidebarData'
 import ProfilePic from '../../../assets/profile.jpg'
+import Link from "next/link";
 
 interface SidebarProps {
 
@@ -16,19 +17,22 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
             <div className="lg:py-1 lg:h-[70vh] lg:block sm:flex xs:flex xs:justify-evenly xs:px-0 md:pt-0 sm:justify-evenly sm:items-center">
                 {sideBarData && sideBarData?.length > 0 && sideBarData?.map((value: any, key: number | string) => {
                     let Icons = value?.icon
+                    let path:string=value?.path||"/"
                     return (
-                        <div className="w-fit flex items-center lg:mt-6 cursor-pointer select-none md:mt-0 lg:py-0" key={key}>
-                            {Icons !== "profile" && <Icons className="sm:text-[30px] lg:text-[1.5rem] xs:text-[1.7rem]"/>}
-                            {Icons === "profile" && <Image src={ProfilePic} alt="" className="lg:w-7 lg:h-7 rounded-full sm:w-[30px] sm:h-[30px] xs:w-[1.7rem] xs:h-[1.7rem]" />}
-                            <p className="ml-4 md:hidden lg:block sm:hidden xs:hidden">{value?.name}</p>
-                        </div>
+                        <Link href={path}>
+                            <div className="w-fit flex items-center lg:mt-6 cursor-pointer select-none md:mt-0 lg:py-0" key={key}>
+                                {Icons !== "profile" && <Icons className="sm:text-[30px] lg:text-[1.5rem] xs:text-[1.7rem]" />}
+                                {Icons === "profile" && <Image src={ProfilePic} alt="" className="lg:w-7 lg:h-7 rounded-full sm:w-[30px] sm:h-[30px] xs:w-[1.7rem] xs:h-[1.7rem]" />}
+                                <p className="ml-4 md:hidden lg:block sm:hidden xs:hidden">{value?.name}</p>
+                            </div>
+                        </Link>
                     )
                 })}
             </div>
             <div className="border border-solid border-[transparent] h-[13vh] sm:hidden xs:hidden md:hidden lg:block">
                 {sideBarFooterData && sideBarFooterData?.length > 0 && sideBarFooterData?.map((value: any, key: number | string) => {
                     let Icons = value?.icon
-                   return (
+                    return (
                         <div className="w-fit flex items-center mt-4 cursor-pointer select-none" key={key}>
                             <Icons className="text-[1.5rem]" />
                             <p className="ml-4">{value?.name}</p>
