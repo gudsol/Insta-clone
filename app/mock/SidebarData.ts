@@ -4,37 +4,44 @@ export const sideBarData=[
     {
         name:'Home',
         icon:Icons?.HomeOutline,
-        path:'/home'
+        path:'/home',
+        filled:Icons?.HomeFilled
     },
     {
         name:'Search',
         icon:Icons?.SearchOutline,
-        path:'/search'
+        path:'/search',
+        filled:Icons?.SearchFilled
     },
     {
         name:'Explore',
         icon:Icons?.CompassOutline,
-        path:'/explore'
+        path:'/explore',
+        filled:Icons?.CompassFilled
     },
     {
         name:'Reels',
         icon:Icons?.ClapperOutline,
-        path:'/'
+        path:'/',
+        filled:Icons?.ClapBoarddFilled
     },
     {
         name:'Messages',
         icon:Icons?.ChatOutline,
-        path:'/message'
+        path:'/message',
+        filled:Icons?.ChatFilled
     },
     {
         name:'Notifications',
         icon:Icons?.HeartOutLine,
-        path:'/notification'
+        path:'/notification',
+        filled:Icons?.HeartFilled,
     },
     {
         name:'Create',
         icon:Icons?.CreateOutline,
-        path:'/create'
+        path:'/create',
+        filled:Icons?.CreateFilled
     },
     {
         name:'Profile',
