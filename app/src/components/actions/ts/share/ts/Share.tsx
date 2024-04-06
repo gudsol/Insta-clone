@@ -40,7 +40,7 @@ const Share: React.FC<SharePros> = (props) => {
     return (
         <div ref={shareDivRef} className='absolute border border-solid border-2 border-[rgba(231,231,232,0.2)]  right-10  h-fit bg-[rgba(25,25,25,0.7)] backdrop-filter backdrop-blur-lg rounded pr-12 pl-4 py-2 grid grid-cols-4 gap-x-14'>
             <WhatsappShareButton
-                url="https://example.com"
+                url="https://main--insta-clone-2024.netlify.app"
                 title="Check out this amazing website!"
                 separator=":: "
             >
